@@ -3,7 +3,6 @@ kind: Kustomization
 bases:
 - ../../base
 resources:
-- elyra-notebook-imagestream.yaml
 - code-server-notebook-imagestream.yaml
 - rstudio-notebook-imagestream.yaml
 - rstudio-gpu-notebook-imagestream.yaml

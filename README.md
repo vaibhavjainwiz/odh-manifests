@@ -21,7 +21,6 @@ Open Data Hub is an end-to-end AI/ML platform on top of OpenShift Container Plat
 * [Distributed Workloads](https://github.com/opendatahub-io/distributed-workloads)
   * [Code Flare](https://github.com/project-codeflare)
 * [ODH Notebook Images](https://github.com/opendatahub-io/odh-manifests/tree/master/notebook-images/overlays/additional)
-  * Elyra Notebook
   * Code Server Notebook
   * R Studio Notebook (CPU & CUDA)
 
