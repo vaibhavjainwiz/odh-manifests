@@ -33,12 +33,12 @@ function deploy_model() {
     os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/modelmesh/service_account.yaml -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
     oc label namespace $MM_NAMESPACE "modelmesh-enabled=true" --overwrite=true || echo "Failed to apply modelmesh-enabled label."
     os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/trustyai/secret.yaml -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
-    os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/trustyai/odh-mlserver-0.x.yaml  -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
+    os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/trustyai/odh-mlserver-1.x.yaml  -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
 
     SECRETKEY=$(openssl rand -hex 32)
     sed -i "s/<secretkey>/$SECRETKEY/g" ${RESOURCEDIR}/trustyai/sample-minio.yaml || eval "$FAILURE_HANDLING"
     os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/trustyai/sample-minio.yaml -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
-    os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/trustyai/openvino-inference-service.yaml -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
+    os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/trustyai/minio_sklearn_mlserver_model.yaml -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
     os::cmd::expect_success "oc apply -f ${RESOURCEDIR}/trustyai/trustyai_crd.yaml -n ${MM_NAMESPACE}" || eval "$FAILURE_HANDLING"
 }
 
@@ -98,7 +98,7 @@ function schedule_and_check_request(){
         \"modelId\": \"example-sklearn-isvc\",
         \"protectedAttribute\": \"predict-0\",
         \"favorableOutcome\": 0,
-        \"outcomeName\": \"predict\",
+        \"outcomeName\": \"predict-0\",
         \"privilegedAttribute\": 0.0,
         \"unprivilegedAttribute\": 1.0
     }'" "requestId" || eval "$FAILURE_HANDLING"
@@ -140,7 +140,7 @@ function teardown_trustyai_test() {
   fi
 
   os::cmd::expect_success "oc delete -f ${RESOURCEDIR}/trustyai/secret.yaml" || eval "$FAILURE_HANDLING"
-  os::cmd::expect_success "oc delete -f ${RESOURCEDIR}/trustyai/odh-mlserver-0.x.yaml" || eval "$FAILURE_HANDLING"
+  os::cmd::expect_success "oc delete -f ${RESOURCEDIR}/trustyai/odh-mlserver-1.x.yaml" || eval "$FAILURE_HANDLING"
   os::cmd::expect_success "oc delete -f ${RESOURCEDIR}/trustyai/trustyai_crd.yaml"  || eval "$FAILURE_HANDLING"
   os::cmd::expect_success "oc delete project $MM_NAMESPACE" || eval "$FAILURE_HANDLING"
 }
