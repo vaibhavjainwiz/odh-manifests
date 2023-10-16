@@ -2,214 +2,213 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  creationTimestamp: null
   name: odh-model-controller-role
 rules:
 - apiGroups:
-    - ""
+  - ""
   resources:
-    - configmaps
-    - endpoints
-    - namespaces
-    - pods
-    - secrets
-    - serviceaccounts
-    - services
+  - configmaps
+  - endpoints
+  - namespaces
+  - pods
+  - secrets
+  - serviceaccounts
+  - services
   verbs:
-    - create
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - maistra.io
+  - maistra.io
   resources:
-    - servicemeshcontrolplanes
+  - servicemeshcontrolplanes
   verbs:
-    - create
-    - get
-    - list
-    - patch
-    - update
-    - use
-    - watch
+  - create
+  - get
+  - list
+  - patch
+  - update
+  - use
+  - watch
 - apiGroups:
-    - maistra.io
+  - maistra.io
   resources:
-    - servicemeshmemberrolls
+  - servicemeshmemberrolls
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - maistra.io
+  - maistra.io
   resources:
-    - servicemeshmembers
+  - servicemeshmembers
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - maistra.io
+  - maistra.io
   resources:
-    - servicemeshmembers/finalizers
+  - servicemeshmembers/finalizers
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - monitoring.coreos.com
+  - monitoring.coreos.com
   resources:
-    - podmonitors
-    - servicemonitors
+  - podmonitors
+  - servicemonitors
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - networking.istio.io
+  - networking.istio.io
   resources:
-    - virtualservices
+  - virtualservices
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - networking.istio.io
+  - networking.istio.io
   resources:
-    - virtualservices/finalizers
+  - virtualservices/finalizers
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - networking.k8s.io
+  - networking.k8s.io
   resources:
-    - networkpolicies
+  - networkpolicies
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - rbac.authorization.k8s.io
+  - rbac.authorization.k8s.io
   resources:
-    - clusterrolebindings
-    - rolebindings
+  - clusterrolebindings
+  - rolebindings
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - route.openshift.io
+  - route.openshift.io
   resources:
-    - routes
+  - routes
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - route.openshift.io
+  - route.openshift.io
   resources:
-    - routes/custom-host
+  - routes/custom-host
   verbs:
-    - create
+  - create
 - apiGroups:
-    - security.istio.io
+  - security.istio.io
   resources:
-    - peerauthentications
+  - peerauthentications
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - serving.kserve.io
+  - serving.kserve.io
   resources:
-    - inferenceservices
+  - inferenceservices
   verbs:
-    - get
-    - list
-    - watch
+  - get
+  - list
+  - watch
 - apiGroups:
-    - serving.kserve.io
+  - serving.kserve.io
   resources:
-    - inferenceservices/finalizers
+  - inferenceservices/finalizers
   verbs:
-    - get
-    - list
-    - update
-    - watch
+  - get
+  - list
+  - update
+  - watch
 - apiGroups:
-    - serving.kserve.io
+  - serving.kserve.io
   resources:
-    - servingruntimes
+  - servingruntimes
   verbs:
-    - create
-    - get
-    - list
-    - update
-    - watch
+  - create
+  - get
+  - list
+  - update
+  - watch
 - apiGroups:
-    - serving.kserve.io
+  - serving.kserve.io
   resources:
-    - servingruntimes/finalizers
+  - servingruntimes/finalizers
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
 - apiGroups:
-    - telemetry.istio.io
+  - telemetry.istio.io
   resources:
-    - telemetries
+  - telemetries
   verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
